@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/output.css">
+    <title>Task Cards</title>
+</head>
+<body class="w-full h-full bg-gray-100 relative">
+
+    <button data-modal-target="default-modal" data-modal-toggle="default-modal" onclick="show()" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        Add Task
+    </button>
+
+    <div id="popUPWind" >
+        <div class="bg-gray-700 rounded-lg shadow-lg w-full p-6 ">
+            <div id="topSide" class="flex justify-between items-center">
+                <label for="taskName" class="block text-white mb-2">Task name:</label>
+                <input type="text" id="taskName" class="w-2/6 h-12 border-none outline-none bg-white rounded-md" required>
+                <label for="deadline" class="text-white">Select Deadline:</label>
+                <input type="date" id="deadline" name="deadline">
+                <label for="status" class="block text-white mb-2">Status:</label>
+                <select id="status" class="bg-white border border-gray-300 rounded-md p-2" required>
+                    <option value="todo">To Do</option>
+                    <option value="inProgress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <label for="priority" class="block text-white mb-2">Priority:</label>
+                <select id="priority" class="bg-white border border-gray-300 rounded-md p-2" required>
+                    <option value='High'>High</option>
+                    <option value='Medium'>Medium</option>
+                    <option value='low'>Low</option>
+                </select>
+            </div>
+            <div class="buttonContainer w-full flex justify-between mt-4">
+                <button id="closebutton" onclick="hide()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
+                <button id="savebutton" onclick="getData()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <main class="px-20 py-20 h-full w-full flex gap-10 " id="main" role="maindiv">
+        
+        <div class="descriptionPopUPWind" id="descriptionPopUPWind" >
+            <h4>Task Name :</h4>
+         <textarea name="description" id="description">
+         
+         </textarea>
+         <div class="buttonContainer" style="width: 100%; display: flex; justify-content: space-around; margin-top: 20px;">
+            <button type="button" onclick="descriptionSave()" >Save</button> 
+            <button type="button" onclick="descriptionclosing()">Close</button>
+        </div>
+         
+         <!-- <button type="button">Save</button> -->
+        </div>
+        <section class="sections">
+            <h1 class="hOns">To Do</h1>
+            <div class="flex justify-around mb-4"> <!-- Flex container for buttons -->
+                <button id="sortByName" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByPriority('todo','TodoTaskScontainer') " >Sort by priority</button>
+                <button id="sortByDate" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByDate('todo','TodoTaskScontainer')">Sort by deadline</button>
+            </div>
+            <div class="TodoTaskScontainer containers" id="TodoTaskScontainer"></div>
+            <div class="palceHolderDiv" id="todoPlace"></div>
+
+        </section>
+
+        <section class="sections">
+            <h1 class="hOns">In Progress</h1>
+
+            <div class="flex justify-around mb-4"> <!-- Flex container for buttons -->
+                <button id="sortByName" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByPriority('inProgress','inProgressContainer')">Sort by priority</button>
+                <button id="sortByDate" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByDate('inProgress','inProgressContainer')">Sort by deadline</button>
+            </div>
+            <div class="ProgressTaskScontainer containers" id="inProgressContainer"></div>
+            <div class="palceHolderDiv" id="inProgressPlace"></div>
+
+        </section>
+
+        <section class="sections">
+            <h1 class="hOns">Done</h1>
+
+            <div class="flex justify-around mb-4"> <!-- Flex container for buttons -->
+                <button id="sortByName" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByPriority('done','doneContainer')">Sort by priority</button>
+                <button id="sortByDate" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onclick="sortByDate('done','doneContainer')">Sort by deadline</button>
+             </div>
+            <div class="DoneTaskScontainer containers" id="doneContainer"></div>
+            <div class="palceHolderDiv" id="donePlace"></div>
+
+        </section>
+    </main>
+
+    
+  
+    <script src="./js/script.js"> </script>
+    
+
+</body>
+</html>
